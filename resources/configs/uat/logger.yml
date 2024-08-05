@@ -1,0 +1,6 @@
+env: "uat"
+
+level: "trace"
+params:
+  - "id"
+  - "path"

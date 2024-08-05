@@ -1,0 +1,9 @@
+env: "uat"
+
+rds:
+  driverName: postgres
+  url: "postgres://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@${DATABASE_URL}/${DATABASE_NAME}?sslmode=disable"
+  maxOpenConnections: 500
+  maxIdleConnections: 100
+  connectionMaxLifetimeInSeconds: 900
+  connectionMaxIdleTimeInSeconds: 600

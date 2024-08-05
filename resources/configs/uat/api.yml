@@ -1,0 +1,131 @@
+env: "uat"
+
+conditionalOrdersCreateScreener:
+  method: "POST"
+  url: "https://core-co-uat.angelbroking.com/admin/v1/condition"
+  service: "conditional-orders-service"
+  headers:
+    accept: "application/json"
+    Content-Type: application/json
+    X-source: "spark"
+  timeoutinmillis: 5000
+  tlshandshaketimeoutinmillis: 2000
+  retrycount: 3
+
+conditionalOrdersCreateBacktest:
+  method: "POST"
+  url: "https://core-co-uat.angelbroking.com/admin/v1/backtest"
+  service: "conditional-orders-service"
+  headers:
+    accept: "application/json"
+    Content-Type: application/json
+    X-source: "spark"
+  timeoutinmillis: 5000
+  tlshandshaketimeoutinmillis: 2000
+  retrycount: 3
+
+conditionalOrdersGetBacktestSummary:
+  method: "GET"
+  url: "https://core-co-uat.angelbroking.com/admin/v1/backtest/%d/result/summary"
+  service: "conditional-orders-service"
+  headers:
+    X-source: spark
+    Content-Type: application/json
+    accept: "application/json"
+  timeoutinmillis: 5000
+  tlshandshaketimeoutinmillis: 2000
+  retrycount: 3
+
+scripMasterSecInfo:
+  method: "GET"
+  url: "https://amxuat.angeltrade.com/admin/report/exchange/v2/getAllSecInfo"
+  headers:
+    Content-Type: application/json
+    accept: application/json
+    X-sourceID: 5
+    X-userType: 1
+    X-OperatingSystem: system
+  timeoutinmillis: 5000
+  tlshandshaketimeoutinmillis: 2000
+  retrycount: 3
+  backoffpolicy:
+    constantbackoff:
+      intervalinmillis: 10
+      maxjitterintervalinmillis: 10
+  hystrixconfig:
+    hystrixtimeoutinmillis: 5000
+    maxconcurrentrequests: 100
+    errorpercentthresold: 50
+    sleepwindowinmillis: 1000
+    requestvolumethreshold: 20
+
+nseSecurityArchivesForDeliveriesAndTrades:
+  method: "GET"
+  url: "https://www.nseindia.com/api/historical/securityArchives"
+  headers:
+    Accept: "*/*"
+    Host: "www.nseindia.com"
+    User-Agent: "trading-signals"
+    Accept-Encoding: "gzip, deflate, br"
+    Cookie: 'bm_sv=08EA2ECAE3470D9C836A96A53450384E~YAAQN0YDFwzHdsSOAQAAzpEX4xfpCGU1CfiF8bJgtceZ88qdCxUn2sILbYG5WZOOt4UPWaIcEm1NSGzcLmqeoUkv0Kw/eX4DKpiPP+agFhNr++aeoHU4TkDyu9/XaOfOrNhYa5PGbq62pSoUdkE3XR1/UkhBMKn0QbIApAEktwbG8/joDMRWMAt9G5CkkgpC2JuAkym+FzKt1HP8YPjwx56wtbK2uJQMzo6RagtzwMjsTFPXHXmxcSjQupGbl/tggrAX~1; RT="z=1&dm=nseindia.com&si=e90a896a-8962-4722-8e37-cc698b81f12f&ss=lv1b5pe0&sl=5&se=8c&tt=48r&bcn=%2F%2F684d0d49.akstat.io%2F&ld=opr"; _ga=GA1.1.1340553159.1712870572; _ga_87M7PJ3R97=GS1.1.1713206907.10.1.1713206937.0.0.0; bm_sz=9F404388C3CE7A9E0EC55CB544EEAC64~YAAQN0YDF5bGdsSOAQAAlUYX4xfwEtco04okPEgBfqcKCaTk87QxahIX8yXaNkrWD5k+HhDDcvrIbabrkzIqK/VH9rUWy0j0z1ZFfuCBwpMajAYy3AOo0lWR4brMGCJEBAZOkR6Pg0hHL56PJ8SO2+oUPM2UX6hdSUyzz8c/1cJWgbHNDX9Hr6GEfZfgoD14rVWzuFgNUIs/maJ9ve+vnsIxdG7BG4zQNmf0GBaQ7mHzfb1W1N1X4kH/bBk44+WEpdWh4mnPJq8omstH+ukJNlYfUCeYeNCbyN5DhvLKsuwp79711gVz3DsemUpv1ZkbHO3vRoQoJUeAgjw8oxu/+3Zvh3M2LPCfylm+ufQnSzRdVL9/ueO0EWu1Sa9TCEp6VgATV5bQ+5nZAi35iU2EyYRmpK0cuCwK+esZclGqSsuXpK0MMzIR23QYFl45SbnFBbiE/f1jzCCALap6kShzYu8+fwuL9ojGoliPlxk=~4405303~4340019; defaultLang=en; nseappid=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGkubnNlIiwiYXVkIjoiYXBpLm5zZSIsImlhdCI6MTcxMzIwNjkzNywiZXhwIjoxNzEzMjE0MTM3fQ.ZrEoRInuE7PeOye1ZdvEPRYGcfQrYLLQZ1IIDEN2uz4; _ga_QJZ4447QD3=GS1.1.1713206912.5.0.1713206920.0.0.0; ak_bmsc=73A6C3E2DB6637DC0AF5449B7BA96BE6~000000000000000000000000000000~YAAQN0YDF7DFdsSOAQAAytMW4xfTa0Sl6Mk/6FNRrUjX6/V6L7mxRLtQuP5wFUSR7EahpaFGn0uwBwU+f/6dH/y/s9mjn/Ix+iDwHhhA0i3e2mXmCWkVxenMi9LjdpuT1PnsyoFiPC2dB9LIA31+hRrI5PexeUc1dyiPhteEdmJGrS6Q/PKfjjqrcQCFILLrfFDrNAL+Z857T31zQSFbGLjNW9g88aOmoGPwSRKA/9cjE5/F+xHwsEMyZfCjuSjhyNdE6qwfN9Yr7Sh5BAyyL3xjaaRlv77a91rztfTGGb5F7/cR3YbNM+toicYDfJRwoO9LQF+fNU3dYH/5gH8ZJpSfqv9jguhhXjovlr7CfaZUzFVA2ZWh3iq00n4X5nb0nIzYKXDfn92DoD841sx0wF6ZIw07SrvuFUkUuibbb+dYLpHTnybX2g==; bm_mi=69E1F9C8DE641414D0CC3E96C7943698~YAAQN0YDF4XFdsSOAQAAZM8W4xecbg5y+qtoFu4Ane3JW3iaezr+HL3FFpfvnG4Hl5AI5Rbv/Nm2hX7RigACz9YOc0mJAQzLqUGzNbY2J0QMdkVXKMBxIGQEABBRvhyy3W0oJarTnPJiPrd0pboFUhMqCLrQ+NzWhmfVDRXUOnvixIbXVN0Sd/sqyZfptv2sdvJ5UbvIM2xxRI7sRYoyVVKRHTeM7q1jQLoM4KRegp4mV7cmt/J8/ZAczxGDwcfFeArCRbVKBrctS3eseWBE1Nsp+dbGYkNIBQgLMKFRIy9JFMSCj3i5w4kO5XgauZ4=~1; nsit=bLCo2CALajfCXtxiPNipmnOf; AKA_A2=A; _abck=225D6D1CC6083F3E596BE91DC1F77666~0~YAAQN0YDFzi4dsSOAQAAnlAR4wu2SlNUPh/lREU4N7PVRnF4vYI1Ja6lzuIN+pP90H9JOuvKvW3Zu6KAw85/8OQqQOM5hFJufleX8fqDlfRW8ezYaFddXVLhSMKgVIyK+oIXMd4xHOzJP72LRjqF0yFquwuZ9GNAbrmoLduzyWj9tZHN/Y7CovJligkBdMVCql4Nqjgq875Ch+pPHU5U5e7IspgbLUX3BHvsdirMqvuNEAJ1CY6LizQbMoHMHIMosdv4xwjD8D/dMaTjBQ3HoVZv3AwJq1cWF0vzJ+AenUROi4Rp/gdqptGbMbYL7RZT4LO5izJU1itse29G5D8fcGuxuwztHirUzy1cTwg7R++RIXf3jBMoq7JCUgHTe4eL0LSIKo9RomxZQGyOSHyT7s6UE39hIy578ocw~-1~-1~-1'
+  timeoutinmillis: 15000
+  connecttimeoutinmillis: 5000
+  tlshandshaketimeoutinmillis: 5000
+  retrycount: 3
+  backoffpolicy:
+    constantbackoff:
+      intervalinmillis: 10
+      maxjitterintervalinmillis: 10
+  hystrixconfig:
+    hystrixtimeoutinmillis: 15000
+    maxconcurrentrequests: 100
+    errorpercentthresold: 50
+    sleepwindowinmillis: 1000
+    requestvolumethreshold: 20
+
+nifty50Top10Holdings:
+  method: "GET"
+  url: "https://www.niftyindices.com/Daily_Reports/Top_10_Holdings/top10nifty50_061223.csv"
+  headers:
+    Accept: "*/*"
+    Host: "www.niftyindices.com"
+    User-Agent: "trading-signals"
+    Accept-Encoding: "gzip, deflate, br, zstd"
+    Accept-Language: "en-GB,en-US;q=0.9,en;q=0.8"
+  timeoutinmillis: 15000
+  connecttimeoutinmillis: 5000
+  tlshandshaketimeoutinmillis: 5000
+  retrycount: 3
+  backoffpolicy:
+    constantbackoff:
+      intervalinmillis: 10
+      maxjitterintervalinmillis: 10
+  hystrixconfig:
+    hystrixtimeoutinmillis: 15000
+    maxconcurrentrequests: 100
+    errorpercentthresold: 50
+    sleepwindowinmillis: 1000
+    requestvolumethreshold: 20
+
+nseHistoricData:
+  method: "GET"
+  url: "https://www.niftyindices.com/Market_Capitalisation_Weightage_Beta_for_NIFTY_50_And_NIFTY_Next_50/mcwb_mar24.zip"
+  headers:
+    Accept: "*/*"
+    Host: "www.niftyindices.com"
+    User-Agent: "trading-signals"
+    Accept-Encoding: "gzip, deflate, br"
+  timeoutinmillis: 15000
+  connecttimeoutinmillis: 5000
+  tlshandshaketimeoutinmillis: 5000
+  retrycount: 3
+  backoffpolicy:
+    constantbackoff:
+      intervalinmillis: 10
+      maxjitterintervalinmillis: 10
+  hystrixconfig:
+    hystrixtimeoutinmillis: 15000
+    maxconcurrentrequests: 100
+    errorpercentthresold: 50
+    sleepwindowinmillis: 1000
+    requestvolumethreshold: 20

@@ -1,0 +1,19 @@
+client:
+  user:
+    permissions: [
+      "/getWatchlist"
+      "/setWatchlist"
+    ]
+sub-broker:
+  user:
+    roles: []
+    permissions: []
+employee:
+  admin:
+    roles: ["client:user", "sub-broker:user", "user"]
+    permissions: [
+      "",
+      ""
+    ]
+  user:
+    permissions:

@@ -1,0 +1,77 @@
+env: "uat"
+
+stockSearchRecommendQuery:
+  k: 200
+  size: 10
+  fuzziness: 3
+  boost: 10
+  exclude: ["search_term_embedding"]
+
+stockSearchAboutUsQuery:
+  k: 200
+  fuzziness: 2
+  fields: ["info.company_name^5", "info.people_associated^4", "info.product^3", "info.domain_or_category", "info.locations", "info.business_category", "info.token"]
+  exclude: ["token_list_embedding", "token_list", "info.about_text"]
+
+awsconfigs:
+  aws_labs_endpoint: "https://vpc-labs-ts-uat-4ohhp27lucouhs45ebzycglx5a.ap-south-1.es.amazonaws.com"
+
+opensearch:
+  stock_search_recommend_index: "stock_search_recommend_built_in_embedding"
+  stock_sentiment_momentum_index: "stock_sentiment_momentum_uat"
+  stock_search_about_us_index: "stock_about_us_built_in_embedding"
+  embedding_model_id: "4kx0fZABlaba8Li1u6xx"
+  token_list_embedding_path: "token_list_embedding"
+
+metrics:
+  linearBucket:
+    start: 0.1
+    width: 0.2
+    count: 15
+
+exchangeSegments: ["nse_cm"]
+tokenTypes:
+  nse_cm: ["EQUITY"]
+
+scripMaster:
+  pollFrequencyInMinutes: 120
+  s2sAuthServiceName: amx
+
+backtestDurationInDays:
+  1mi: 90
+  2mi: 120
+  3mi: 150
+  4mi: 150
+  5mi: 180
+  10mi: 180
+  15mi: 180
+  30mi: 360
+  1hr: 360
+  2hr: 360
+  3hr: 360
+  4hr: 360
+  1d: 720
+  1w: 720
+  1mo: 720
+
+screenerNonIntraDayExecution:
+  at: "05:30"
+  offsetInMinutes: 15
+
+jobs:
+  sebiPublicReports:
+    at: "10:00"
+  nseSecurityArchivesForDeliveriesAndTrades:
+    at: "00:30"
+    dataType: "deliverable"
+    series: "ALL"
+  strategyBacktestSummary:
+    frequencyInSeconds: 10
+    limit: 100
+  nifty50Top10Holdings:
+    at: "00:30"
+    exchange: "nse_cm"
+    tokenType: "EQUITY"
+  nseHistoricData:
+    exchange: "nse_cm"
+    tokenType: "EQUITY"

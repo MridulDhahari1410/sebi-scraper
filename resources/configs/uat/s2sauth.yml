@@ -1,0 +1,29 @@
+env: "uat"
+
+amx:
+  privateKey: "${S2S_AMX_PRIVATE_KEY}"
+  targetApplicationNames: ["amx-reports", "amx-scrip-insights"]
+  expiryInSeconds: 120
+  keyId: trading-signals-key-v1
+  issuer: trading-signals
+  subject: trading-signals
+
+conditional-orders-service:
+  privateKey: "${S2S_CONDITIONAL_ORDERS_PRIVATE_KEY}"
+  publicKeys:
+    conditional-orders-service-key-v1: |-
+      -----BEGIN PUBLIC KEY-----
+      MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCdgpIxSwqihVjYYTZtxWL3U3a/
+      kLEs+0/AUn02a9jUot82ltvtQKplpsppryEX9s8B+InRTk9iuJ2k9alocVxhVaW7
+      ywTgE5/XeINRu6fxZUURx3mDpZxLGPBuizCiZp746caZtVJaQiL9c2te8LA5rUdg
+      HMORH0A034zZXx3scwIDAQAB
+      -----END PUBLIC KEY-----
+  targetApplicationNames: ["conditional-orders-core"]
+  expiryInSeconds: 120
+  keyId: trading-signals-v1
+  issuer: trading-signals
+  subject: trading-signals
+
+supportedServices:
+  - amx
+  - conditional-orders-service

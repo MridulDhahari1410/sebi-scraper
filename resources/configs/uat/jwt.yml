@@ -1,0 +1,16 @@
+env: "uat"
+
+spark:
+  signingAlgorithm: "HS256"
+  symmetricKey: "${JWT_SYMMETRIC_KEY_SPARK}"
+  identity: "userData"
+  timeoutInHours: 4
+  sources:
+    - "spark"
+    - "spark-web"
+    - "spark-android"
+    - "spark-ios"
+    - "spark-registered"
+
+supportedRealms:
+  - "spark"

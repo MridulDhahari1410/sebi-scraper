@@ -1,0 +1,38 @@
+env: uat
+
+authentication:
+  publicKey:
+    non_trade_login_service:
+      secret1: |-
+        -----BEGIN PUBLIC KEY-----
+        MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCsSyJLWlc68L60ZFOY36JPCNC1
+        L9Upk4T8dMvjNhIUEDGtUQ8kn/ByoFF+mpPvZtgCaC6vNbhAhdlSvXcHYeIs+4E8
+        gDb8h0DFKP0d0ZccTW1ZVkmqzbUJBVHMQ7dkH51WPr0tEBBd0D/uDHbVqh2Z6u3m
+        ziMJEpECWK9pcJr3nwIDAQAB
+        -----END PUBLIC KEY-----
+      secret2: |-
+        -----BEGIN PUBLIC KEY-----
+        MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCsSyJLWlc68L60ZFOY36JPCNC1
+        L9Upk4T8dMvjNhIUEDGtUQ8kn/ByoFF+mpPvZtgCaC6vNbhAhdlSvXcHYeIs+4E8
+        gDb8h0DFKP0d0ZccTW1ZVkmqzbUJBVHMQ7dkH51WPr0tEBBd0D/uDHbVqh2Z6u3m
+        ziMJEpECWK9pcJr3nwIDAQAB
+        -----END PUBLIC KEY-----
+    trade_login_service:
+      trade_key_v1: |-
+        -----BEGIN PUBLIC KEY-----
+        MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCSTbos/EszQtGmxT15LEd+9c1p
+        tYtRPhemcfXM0vz+7sDY8Kn8+I4StU3dzRBQgw/xvjHHb19v+DFBFdvBwnzl7OCq
+        4QW2r7zmc1KehkCdZnzBK9uXH8qMGV36G4dkPUC2G8akOaEPNMia1DCYUzYaEJO8
+        GtN8BDrJTNoYtxHatQIDAQAB
+        -----END PUBLIC KEY-----
+      non_trade_login_service:
+        non_trade_key_v1: |-
+          -----BEGIN PUBLIC KEY-----
+          MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCkPmIkGIFomR6KNsPD7rTo9jMq
+          8WoHpxdlMP3tgoc4Iqlz/aL0/v4ttQvHxVJtyW9VjI7rf75/80MEC58d2tbrO1yc
+          jDQYdnPi4yvkxDpwxfADdH2FoiTRgLMM+bD8OM6kJBHPdhpB3z/FBhwtfqQrYju6
+          5sUdRkp3G0XYnGMk5wIDAQAB
+          -----END PUBLIC KEY-----
+enableOldJWTSupportForNonTradeLoginService: true
+enableOldJWTSupportForTradeLoginService: true
+enableS2SSupport: true
